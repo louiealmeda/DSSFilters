@@ -1,0 +1,228 @@
+.cp *{
+/*    border:1px solid red;*/
+}
+
+.cp #profilePane {
+    position:relative;
+    width:70%;
+    height:100%;
+    vertical-align:text-top;
+}
+
+.cp{
+
+}
+
+
+.cp #profilePane, .cp #foldersPane{
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0px 0px 5px black;
+    vertical-align:text-top;
+}
+
+.cp #profilePane #profileTabs{
+    top:0px;
+    position:relative;
+    padding:0px;
+    margin:-2px;
+    width:102%;
+    height:30px;
+    display:block;
+    background: -webkit-linear-gradient(#2a2a2a,#1c1c1c);
+/*    height:inherit;*/
+    color:white;
+    text-align:center;
+    -webkit-user-select:none;
+}
+
+.cp #foldersPane #foldersHeader{
+/*    top:-12px;*/
+/*    position:relative;*/
+    padding:6px 0px;
+/*    margin:-2px;*/
+/*    width:102%;*/
+/*    height:16px;*/
+/*    display:table-cell;*/
+    background: -webkit-linear-gradient(#2a2a2a,#1c1c1c);
+/*    height:inherit;*/
+    color:white;
+    font-size:0.9em;
+    text-align:center;
+    cursor:pointer;
+    -webkit-user-select:none;
+}
+
+.cp #profileTabs li {
+    margin:auto;
+/*    padding:10px 10px;*/
+/*    padding:0px;*/
+    float:left;
+/*    height:100%;*/
+    list-style:none;
+    padding:5px 14px;
+    color:white;
+    
+    font-size:0.8em;
+    cursor:pointer;
+    cursor:hand;
+}
+
+
+.cp #profileTabs li:hover{
+/*    border-bottom: 2px solid #00a2ff;   */
+    color:#00a2ff;
+}
+
+
+.cp #profileTabs li.selected {
+    border-bottom: 2px solid #00a2ff;   
+    color:#00a2ff;
+}
+
+.cp #profileTabs{
+    display:block;
+}
+
+
+.cp #foldersPane {
+    padding:0px;
+    margin:0px;
+    width:30%;
+    height:100%;
+    vertical-align:text-top;
+}
+
+
+.cp #foldersPane>table{
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    top:-4px;
+    position:relative;
+}
+
+.cp #profileContent {
+/*    margin:20px;*/
+    display:inline-block;
+    position:absolute;
+    margin:2.5%;
+    width:94%;
+    height:90%;
+}
+
+
+.cp #profilePictureTd{
+    width:100px;
+    height:100px;
+    padding:10px;
+}
+
+#profileValuesCol {
+    width:300px;
+}
+
+#profileDescriptionCol {
+    width:100px;
+}
+
+.cp #profileContent input, .cp #profileContent textarea {
+    width:auto;
+    margin:0px;
+    padding:0px;
+    display:block;
+    height:100%;
+    font-size:1em;
+    resize:none;
+    background-color:transparent;
+
+}
+
+.cp #profileContent textarea
+{
+    width:100%;
+}
+
+.cp #profileContent textarea:disabled{
+/*    box-shadow:inset 0px 1px 4px #c3c3c3;*/
+/*    border: 1px solid light-gray;*/
+    border:none;
+    color:black;
+    width:100%;
+    background-color:transparent;
+
+}
+
+.cp #profileContent input:disabled {
+    color:black;
+    box-shadow:none;
+    border:none;
+}
+
+
+.cp #phoneList div {
+    padding-left:40px;
+}
+
+.cp #phoneList{
+    width:100%;   
+}
+.cp #phoneList input {
+
+    display:inline-block;
+}
+
+.cp #addressList div {
+    padding-left:40px;
+}
+
+.cp textarea {
+    width:100%;
+/*    background-color:red;*/
+    display:block;
+}
+
+.cp #profileEditButton {
+    -webkit-transition:0.2s;
+    -webkit-user-select:none;
+    width:auto;
+    position:absolute;
+    bottom:17px;
+    right:17px;
+    height:auto;
+    padding:5px 10px;
+    border-radius:10px;
+    box-shadow:0px 0px 6px black;
+    background: -webkit-linear-gradient(#2a2a2a,#1c1c1c);
+    color:white;
+    cursor:pointer;
+    cursor:hand;
+}
+
+#profileContents {
+
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+#AddressList {
+    padding-left:40px;
+}
+
+#profileContents .info {
+    width:69%;
+/*    border:1px solid red;*/
+    display:inline-block;
+}
+
+#profileContents .disc {
+    width:30%;
+/*    border:1px solid red;*/
+    display:inline-block;
+}
+
+.info input {
+    width:100%;
+}

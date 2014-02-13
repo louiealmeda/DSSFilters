@@ -1,0 +1,584 @@
+
+@font-face{
+    font-family:"Sansation";
+    src: url("fonts/Sansation_Regular.ttf");
+}
+@font-face{
+    font-family:"Sansation light";
+    src: url("fonts/Sansation_Light.ttf");
+}
+@font-face{
+    font-family:"Sansation bold";
+    src: url("fonts/Sansation_Bold.ttf");
+}
+
+@font-face{
+    font-family:"Open Sans";
+    src: url("fonts/OpenSans-Regular.ttf");
+}
+
+@font-face{
+    font-family:"Open Sans Light";
+    src: url("fonts/OpenSans-Light.ttf");
+}
+@font-face{
+    font-family:"Open Sans Bold";
+    src: url("fonts/OpenSans-Bold.ttf");
+}
+
+*{
+/*    border:1px solid red;*/
+    font-family:"Open Sans";
+    -webkit-transition:0.2s;
+    -webkit-font-smoothing:antialiased;
+}
+
+#content {
+/*    top:50px;*/
+    position:relative;
+    max-width:1600px;
+    min-width:854px;
+    height:100%;
+    margin:auto;
+/*    overflow-y:hidden;*/
+    max-height:100%;
+    
+/*    z-index:-1;*/
+}
+
+
+
+/*Rules for header*/
+
+#header {
+/*    border:1px solid red;*/
+    -webkit-user-select:none;
+/*    position:absolute;*/
+    width:100%;
+    height:50px;
+/*    min-width:1550;*/
+    box-shadow:0px 0px 8px black;
+    background: -webkit-linear-gradient(#2a2a2a,#232323);
+    top:0px;   
+}
+
+#header>ul{
+    display:table;
+    margin:0px;
+    padding:0px;
+    list-style:none;
+    height:100%;
+}
+
+
+#header>ul>li{
+    display:table-cell;
+    height:100%;
+    padding:0px;
+    margin:0px;
+}
+
+#headerTitle {
+    cursor: pointer;
+    font-size:1.5em;
+    color:white;
+    font-family: "Sansation";
+    display:table-cell;
+    vertical-align:middle;
+    height:50px;
+    padding:0px 0px 0px 30px;
+    text-shadow:0px 0px 4px black;
+    -webkit-user-select: none;
+}
+
+
+#headerTitleContainer {
+    display:inline-block;
+    
+}
+
+#header * {
+/*    border: 1px solid red;*/
+}
+
+#header #navBar {
+/*    outline:1px solid red;*/
+    width:500px;
+    display:inline-block;
+    height:100%;
+    padding:0px;
+    text-shadow: 0px -1px 0px black;
+    position:relative;
+    z-index:99999
+/*    z-index:9999;*/
+}
+
+#navBar>ul {
+    position:relative;
+    height:100%;
+    width:400px;
+    padding:0px 8px;
+/*    top:-1px;*/
+    margin:0px;
+    list-style:none;
+    display:table;
+    position:absolute;
+    top:0px;
+}
+
+#navBar ul>li {
+    cursor:pointer;
+    cursor:hand;
+    font-family:"Sansation";
+    color:#c6c6c6;
+    padding:10px;
+/*    float:left;*/
+    height:100%;
+    width:auto;
+    position:relative;
+    display:table-cell;
+    vertical-align:middle;
+    border-radius:10px 10px 0px 0px;
+    z-index:1000;
+    text-align:center;
+
+    
+}
+
+#navBar li.selected{
+/*    box-shadow:inset 0px 0px 10px white;*/
+    color:#00a2ff;
+    background: rgba(0, 0, 0, 0.13);
+    background:-webkit-linear-gradient(#66b5ef,#3978cb );
+    box-shadow:none;
+    border-top: 1px solid #b4ebfb;
+/*    border-bottom:1px solid #1e4283;*/
+    color:black;
+    text-shadow:0px 1px 0px #b2b2b2;
+
+    
+    
+}
+
+#navBar li:not(.selected):hover {
+/*    color:#00a2ff;*/
+/*    box-shadow: inset 0px 0px 6px black;*/
+    color:#66b5ef;
+}
+
+
+#header>table{
+    width:100%;
+}
+
+#profileMenu {
+    cursor:pointer;
+    cursor:hand;
+    font-family:"Sansation";
+    color:white;
+    text-align:right;
+    padding:0px 20px;
+    text-shadow: 0px -1px 0px black;
+    width:auto;
+    z-index:99999;
+    right:0px;
+    position:absolute;
+    display:inline-block;
+    padding-bottom:40px;
+    top:15px;
+    
+/*    width:200px;*/
+}
+
+
+#profileMenu:hover {
+    color:#00a2ff;
+}
+
+#profileMenu:hover * {
+    color:white;
+}
+
+#profileMenu:hover ul{
+    display:block;
+}
+
+#profileMenu ul {
+    display:none;
+    right:0px;
+    padding:0px;
+    margin:15px 0px 0px 0px;
+/*    padding-right:0px;*/
+/*    padding:5px 10px;*/
+    position:absolute;
+    background-color:#232323;
+    width:auto;
+    
+/*    box-shadow:0px 3px 9px 4px black;*/
+}
+
+
+
+#profileMenu ul li {
+    font-size: 0.9em;
+    font-family:"Sansation light";
+    position:relative;
+    padding:15px 20px;
+/*    left:-20px;*/
+    margin:0px;
+    list-style:none;
+    text-align:right;
+/*    width:100%;*/
+
+    
+}
+
+#profileMenu ul li:hover{
+    
+    color: #00a2ff;
+    background-color:#2a2a2a;
+}
+
+
+#submenuBarContainer {
+/*    display:none;*/
+    z-index:-999;
+    height:0px;
+    
+}
+
+
+
+#submenuBar {
+    -webkit-user-select:none;
+/*    border-top: 1px solid #00a2ff;*/
+/*    box-shadow:inset 0px 1px 0px black;*/
+    height:10px;
+/*    background: -webkit-linear-gradient(#232323,#1a1a1a);*/
+    background:-webkit-linear-gradient(#3877ca,#2057b6);
+/*    box-shadow:0px 0px 8px black;*/
+    color:black;
+/*    padding:5px 20px;*/
+    padding:0px 10px;
+/*    display:none;*/
+    top:-2px;
+    position:relative;
+    box-shadow: 0 5px 5px -4px black;
+    
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+    border-bottom:1px solid #1e4283;
+    display:table;
+    width:100%;
+}
+
+#submenuBar li.selected{
+    color: black;
+/*    background-color:#2a2a2a;*/
+    
+
+}
+
+
+#submenuBar * {
+    padding:0px;
+    margin:0px;
+    height:100%;
+}
+
+#submenuBar>ul li {
+    font-family:"Sansation";
+    cursor:pointer;
+    cursor:hand;
+    float:left;
+    list-style:none;
+    padding:8px 20px;
+    padding-top: 5px;
+    font-size: 0.8em;
+/*    color:#cecece;*/
+    height:100%;
+    display:table-cell;
+}
+
+#submenuBar>ul li:hover{
+    color:#00a2ff;
+    color:white;
+/*    background-color:#00a2ff;*/
+}
+
+
+
+
+
+
+/*======Rules for results pane============*/
+
+#resultsPane {
+    padding-top:70px;
+/*    position:absolute;*/
+/*    top:0px;*/
+/*    right:0px;*/
+    width:600px;
+/*    height:100px;*/
+/*    height:80%;*/
+/*    background-color: #e8e8e8;*/
+/*    display:inline-block;*/
+/*    overflow-y:scroll;*/
+}
+
+
+#overFlow {
+    width:100%;
+    height:100%;
+/*    border: 1px solid red;*/
+    overflow-y:scroll;
+/*    height:100px;*/
+    display:inline-block;
+}
+
+.profileCell {
+    width:542px;
+    height:auto;
+    margin:auto;
+    display:block;
+}
+
+.profileCell * {
+    overflow:hidden;
+}
+
+.groupIndicator {
+    width:13px;
+    height:13px;
+    display:inline-block;
+    position:absolute;
+    background-color:red;
+    top:8px;
+    right:8px;
+    border-radius:100%;
+    
+}
+
+.profileCell>table {
+    width:100%;
+    height:100%;
+    padding:20px;
+    
+}
+
+.profile_picture {
+    position:relative;
+    cursor:pointer;
+    cursor:hand;
+    border-radius: 8px;
+/*    border: 2px dashed gray;*/
+    padding:0px;
+    overflow:hidden;
+}
+
+#profile_info {
+    padding-left:10px;
+    vertical-align:text-top;
+/*    text-shadow:0px 0px 5px black;*/
+}
+
+.profileCell span#profile_name {
+    cursor:pointer;
+    cursor:hand;
+    font-size:1.4em;
+    color:#00a2ff;
+    width:auto;
+    display:block;
+}
+
+.profileCell span#profile_pastTitle {
+    width:auto;
+    display:inline-block;
+    cursor:pointer;
+    cursor:hand;
+}
+
+.profileCell span#profile_bio {
+    width:auto;
+    display:block;
+    font-size:0.8em;
+    color:#575757;
+}
+
+.profileCell div#profile_options {
+    cursor:pointer;
+    position:absolute;
+    top:0px;
+    right: 0px;
+    height:30px;
+    width:30px;
+    border-radius:8px;
+    
+/*    background-color:lightgray;*/
+    background: -webkit-linear-gradient(#2a2a2a,#232323);
+    -webkit-transition:0.2s;
+    overflow:hidden;
+    box-shadow:0px 0px 4px black;
+}
+
+#profile_options table td:hover {
+    background-color: #00a2ff;
+    color:black;
+}
+
+#profile_options_container {
+    position:relative;
+    overflow:visible;
+}
+
+.skillsLabel {
+    font-size:0.8em;
+    cursor:pointer;
+    cursor:hand;
+    width:auto;
+    height:20px;
+/*    display:inline-block;*/
+    display:table-cell;
+    padding:0px 10px;
+    border-radius:8px;
+    vertical-align:middle;
+    background-color:#e2e2e2;
+}
+
+.profileCell div#profile_options:hover {
+    width:130px;
+    height:60px;
+}
+
+.skillsBar {
+/*    overflow-x:scroll;*/
+    display:inline-block;
+    height:100%;
+    width:80%;
+    float:left;
+}
+
+.rateLabel {
+    font-size:0.9em;
+/*    overflow-x:scroll;*/
+    display:inline-block;
+    height:20px;
+    width:19%;
+    float:left;
+    bottom:0px;
+    position:absolute;
+    text-align:right;
+}
+
+#profile_bottomBar {
+    position:relative;
+    height:25px;
+}
+
+#profile_options:hover table{
+    visibility:visible;
+    opacity:1;
+}
+
+#profile_options table {
+    -webkit-transition:0.2s;
+    opacity:0;
+    visibility:hidden;
+    height:100%;
+    position:relative;
+    font-size:0.8em;
+}
+
+#profile_options table .spacer{
+    width:30px;
+    background-color:inherit;
+    cursor:pointer;
+}
+
+#profile_options table .spacer:hover{
+    
+    background-color:inherit;
+}
+
+#profile_options table td{
+    -webkit-user-select:none;
+    -webkit-transition:0s;
+    text-align:center;
+    vertical-align:middle;
+    cursor:pointer;
+    cursor:hand;
+    color:white;
+}
+
+/*
+#profile_options table td:hover{
+    background-color:white;
+}
+*/
+
+.customHr{
+    display:block;
+    width:100%;
+    height:1px;
+    background-color:lightgray;
+}
+
+.profile_picture img{
+    position:absolute;
+    top:0px;
+}
+
+.profileCell span#profile_desiredPosition {
+    cursor:pointer;
+    cursor:hand;
+    border-radius:7px;
+    background-color:#e8e8e8;
+    padding: 2px 5px;
+    font-size:0.9em;
+}
+
+.profileCell span#profiel_yearsOfExperience {
+    cursor:pointer;
+    cursor:hand;
+    border-radius:7px;
+    background-color:#00a2ff;
+    padding: 2px 5px;
+    font-size:0.9em;
+    color:white;
+    
+}
+
+body {
+    position:relative;
+    margin:auto;
+    height:100%;
+}
+
+#filtersPane {
+
+/*    left:4px;*/
+/*    position:relative;*/
+/*    width:250px;*/
+/*    height:110%;*/
+/*    display:inline-block;*/
+    background-color:white;
+    box-shadow:0px 0px 4px black;
+    border-radius:7px;
+    
+}
+
+html, body {
+    height:100%;
+    overflow:hidden;
+}
+
+/*===================*/
+
+
+#maintable {
+    width:100%;
+    height:100%;
+    min-width:960px;
+}
+
+
