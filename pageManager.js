@@ -46,7 +46,7 @@ $(document).ready(function(){
     
     
 
-    LoadPage("Candidates/page_CandidateSearch.html");
+//    LoadPage("Candidates/page_CandidateSearch.html");
 //    LoadPage("Candidates/index.html");
     
 

@@ -10,25 +10,21 @@
     </head>
 
     <body>
-        <table id = "maintable" cellspacing = "0px">
-            <tr height = "50px">
-                <td id = "header"> 
-                    <ul>
-                        <li id = "headerTitleContainer">
-                            <div id = "headerTitle">Applicants Management Suit</div>
-                        </li> 
-                        <li id = "navBar">
-                            <ul>
-                                <li id = "1">Dashboard</li>
-                                <li id = "2">Candidates</li>
-                                <li id = "3">Open Jobs</li>
-                                <li id = "4">Folders</li>
-                                
-                            </ul>
-                        </li>
-                        
-                        
-                    </ul>   
+            <div id = "header"> 
+                <ul>
+                    <li id = "headerTitleContainer" class="headerTitle">
+                        Applicants Management Suit
+                    </li> 
+                    <li id = "navBar">
+                        <ul>
+                            <li id = "1">Dashboard</li>
+                            <li id = "2">Candidates</li>
+                            <li id = "3">Open Jobs</li>
+                            <li id = "4">Folders</li>
+
+                        </ul>
+                    </li>
+
                     <li id = "profileMenu">Louie Almeda
                         <ul>
                             <li>Manage</li>  
@@ -36,26 +32,93 @@
                             <li>Logout</li>  
                         </ul>
                     </li>
-                </td>           
-            </tr>
-                
-            <tr id = "submenuBarContainer">
-                <td id = "submenuBar">
-                    <ul>
-                        <li id = "1" class = "selected">Manage Profiles</li>
-                        <li id = "2">Search and Filter</li>
-                    </ul>
-                </td>
-            </tr>
-            
-            <tr><td id = "pageArea">
-                <table id = "content">
-<!--Pages goes here-->
-                    
-                </table>
-            </td></tr>
+
+                </ul>   
+
+            </div>           
+
+
+        <div id = "submenuBarContainer">
+                <ul id = "submenuBar">
+                    <li id = "1" class = "selected">Manage Profiles</li>
+                    <li id = "2">Search and Filter</li>
+                </ul>
+
+        </div>
+
+        <div id = "pageArea">
+            <div id = "content" class="cp" >          
+                    <div id = "profilePane">
+                        <ul id = "profileTabs">
+                            <li id = "1">Contact Info</li>
+                            <li id = "2">Details</li>
+                            <li id = "3">Experience</li>
+                            <li id = "4">Education</li>
+                            <li id = "5">Resume</li>
+                            <li id = "6">Tests</li>
+                            <li id = "7">Notes</li>
+                        </ul>
+
+                        <table id = "profileContent">
+                            <tr>
+                                <td id = "profilePictureTd" rowspan="5"><img width = "100px" height="100px"></td>
+                                <td id = "profileDescriptionCol"> Name: </td>
+                                <td id = "profileValuesCol"> <input type="text"/ value="Mark Louie" disabled> </td>
+                            </tr>
+                            <tr>
+                                <td> Last Name: </td>
+                                <td id = "profileValuesCol"> <input type="text"/ value="Almeda" disabled></td>
+                            </tr>
+                            <tr>
+                                <td> Email: </td>
+                                <td id = "profileValuesCol"> <input type="text"/ value="mlb.almeda@gmail.com" disabled></td>
+                            </tr>
+                            <tr>
+                                <td> Folder: </td>
+                                <td id = "profileValuesCol"> Short List  </td>
+                            </tr>
+                            <tr></tr>
+                            <tr><td colspan="3"><hr></td></tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <div id = "profileContents"> </div>
+                                </td>
+
+                            </tr>
+
+                        </table>   
+
+                        <div id = "profileEditButton" onclick="ToggleEdit();">Edit</div>
+
+                    </div>
+
+                    <div id = "foldersPane">
+                        <table cellspacing = "0">
+                            <tr height = "15px">
+                                <td id = foldersHeader>Folders</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    The quick brown fox jumps over the lazy dog
+                                    <ul>
+                                        <li>Cool
+                                            <ul>
+                                                <li>Yeah I need a longer text</li>
+                                                <li>Boom</li>                    
+                                                <li>Yeah</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            </table>
+        </div>
+
        
-        </table>
     </body>
 
 </html>

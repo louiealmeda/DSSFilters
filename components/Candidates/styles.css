@@ -1,15 +1,34 @@
-.cp *{
+.cp{
+    height: 100%;
 /*    border:1px solid red;*/
+    border-spacing: 20px;
+    width: 100%;
 }
 
 .cp #profilePane {
     position:relative;
-    width:70%;
+    width:100%;
     height:100%;
     vertical-align:text-top;
+    background-color: #eaeaea;
+
 }
 
-.cp{
+.cp #profilePane {
+    position:relative;
+/*    width:auto;*/
+    height:100%;
+    vertical-align:text-top;
+    
+/*
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+*/
+}
+
+.cp>div{
+    display: table-cell;
+    height: 100%;
 
 }
 
@@ -19,16 +38,19 @@
     overflow:hidden;
     box-shadow:0px 0px 5px black;
     vertical-align:text-top;
+    
 }
 
 .cp #profilePane #profileTabs{
     top:0px;
     position:relative;
     padding:0px;
-    margin:-2px;
-    width:102%;
-    height:30px;
-    display:block;
+    padding-top: 20px;
+/*    padding-right: 20px;*/
+    margin:0px;
+    width:140px;
+    height:100%;
+    display:inline-block;
     background: -webkit-linear-gradient(#2a2a2a,#1c1c1c);
 /*    height:inherit;*/
     color:white;
@@ -57,27 +79,39 @@
     margin:auto;
 /*    padding:10px 10px;*/
 /*    padding:0px;*/
-    float:left;
+    clear: right;
+    float:right;
 /*    height:100%;*/
     list-style:none;
-    padding:5px 14px;
+    padding:5px 0px;
+    padding-left: 10px;
+    padding-right: 20px;
     color:white;
-    
-    font-size:0.8em;
+    width: auto;
+    font-size:1em;
     cursor:pointer;
     cursor:hand;
+    display: block;
+    text-align: right;
+    border-radius: 5px 0px 0px 5px;
 }
 
 
 .cp #profileTabs li:hover{
 /*    border-bottom: 2px solid #00a2ff;   */
-    color:#00a2ff;
+    color:black;
+    background-color: rgba(255,255,255,0.5);
 }
 
 
 .cp #profileTabs li.selected {
-    border-bottom: 2px solid #00a2ff;   
-    color:#00a2ff;
+/*    border-bottom: 2px solid #00a2ff;   */
+    color:#181c2f;
+    font-size: 1.2em;
+    box-shadow: -3px 0px 4px rgba(0,0,0,0.5);
+    background-color: #eaeaea;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
 }
 
 .cp #profileTabs{
