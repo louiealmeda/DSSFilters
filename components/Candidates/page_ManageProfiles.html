@@ -6,53 +6,121 @@
 <table id = "content" class="cp" cellspacing = "20px" >          
     <tr>
         <td id = "profilePane">
-            <ul id = "profileTabs">
-                <li id = "1">Contact Info</li>
-                <li id = "2">Details</li>
-                <li id = "3">Experience</li>
-                <li id = "4">Education</li>
-                <li id = "5">Resume</li>
-                <li id = "6">Tests</li>
-                <li id = "7">Notes</li>
-            </ul>
-            
-            <table id = "profileContent">
-                <tr>
-                    <td id = "profilePictureTd" rowspan="5"><img width = "100px" height="100px"></td>
-                    <td id = "profileDescriptionCol"> Name: </td>
-                    <td id = "profileValuesCol"> <input type="text"/ value="Mark Louie" disabled> </td>
-                </tr>
-                <tr>
-                    <td> Last Name: </td>
-                    <td id = "profileValuesCol"> <input type="text"/ value="Almeda" disabled></td>
-                </tr>
-                <tr>
-                    <td> Email: </td>
-                    <td id = "profileValuesCol"> <input type="text"/ value="mlb.almeda@gmail.com" disabled></td>
-                </tr>
-                <tr>
-                    <td> Folder: </td>
-                    <td id = "profileValuesCol"> Short List  </td>
-                </tr>
-                <tr></tr>
-                <tr><td colspan="3"><hr></td></tr>
-                
-                <tr>
-                    <td colspan="3">
-                        <div id = "profileContents"> </div>
-                    </td>
-                
-                </tr>
-                
-            </table>   
-                
-            
-            
-            <div id = "profileEditButton" onclick="ToggleEdit();">Edit</div>
-            
+            <div id = "profilePaneTable">
+                <ul id = "profileTabs">
+                    <li id = "1">Contact Info</li>
+                    <li id = "2">Details</li>
+                    <li id = "3">Experience</li>
+                    <li id = "4">Education</li>
+                    <li id = "5">Resume</li>
+                    <li id = "6">Tests</li>
+                    <li id = "7">Notes</li>
+                </ul>
+
+                <div id = "profileContentContainer">
+                    <div>
+                        <table id = "profileContent">
+                            <tr>
+                                <td id = "profilePictureTd" rowspan="5"><img width = "100px" height="100px"></td>
+                                <td id = "profileDescriptionCol"> Name: </td>
+                                <td id = "profileValuesCol"> <input type="text"/ value="Mark Louie" disabled> </td>
+                            </tr>
+                            <tr>
+                                <td> Last Name: </td>
+                                <td id = "profileValuesCol"> <input type="text"/ value="Almeda" disabled></td>
+                            </tr>
+                            <tr>
+                                <td> Email: </td>
+                                <td id = "profileValuesCol"> <input type="text"/ value="mlb.almeda@gmail.com" disabled></td>
+                            </tr>
+                            <tr>
+                                <td> Folder: </td>
+                                <td id = "profileValuesCol"> Short List  </td>
+                            </tr>
+                            <tr></tr>
+                            <tr><td colspan="3"><hr></td></tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <div id = "profileContents"> </div>
+                                </td>
+
+                            </tr>
+
+                        </table>   
+                    </div>
+                </div>
+            </div>
+            <div id = "actions">
+                <div id = "profileEditButton" onclick="ToggleEdit();">Edit</div>
+                <div id = "newButton" onclick="AddNewProfile();">New Applicant Profile</div>
+            </div>
         </td>
         
         <td id = "foldersPane">
+            <div id = "foldersHeader">
+                Folders <div id = "add">+</div>
+                <input type="text" id = "search" class="customTextBox" placeholder="Search">
+            </div>
+            <ul id = "folders">
+                <li class="hidden">
+                    <div>Group 1</div>
+                    <ul class = "group">
+                        <li>name 1</li>
+                        <li>name 2</li>
+                        <li>name 3</li>
+                        <li>name 4</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <div>Group 2</div>
+                    <ul class = "group">
+                        <li>name 1</li>
+                        <li>name 2</li>
+                        <li>name 3</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <div>Group 3</div>
+                    <ul class = "group">
+                        <li>name 1</li>
+                        <li>name 2</li>
+                        <li>name 3</li>
+                        <li>name 4</li>
+                        <li>name 5</li>
+                        <li>name 6</li>
+                        <li>name 7</li>
+                        <li>name 8</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <div>Group 4</div>
+                    <ul class = "group">
+                        <li>name 1</li>
+                        <li>name 2</li>
+                        <li>name 3</li>
+                        <li>name 4</li>
+                        <li>name 5</li>
+                        <li>name 6</li>
+                    </ul>
+                </li>
+                <li>
+                    <div>Group 5</div>
+                    <ul class = "group">
+                        <li>name 1</li>
+                        <li>name 2</li>
+                        <li>name 3</li>
+                        <li>name 4</li>
+                        <li>name 5</li>
+                        <li>name 6</li>
+                    </ul>
+                </li>
+                
+            </ul>
+<!--
             <table cellspacing = "0">
                 <tr height = "15px">
                     <td id = foldersHeader>Folders</td>
@@ -72,6 +140,7 @@
                     </td>
                 </tr>
             </table>
+-->
         </td>
     </tr>
 </table>

@@ -15,6 +15,7 @@ $(document).ready(function(){
     var id = 0;
     var subId = 0;
     
+    
     navbarPages[0] = "";
     navbarPages[1][0] = "Candidates/page_ManageProfiles.html";
         navbarPages[1][1] = "Candidates/page_CandidateSearch.html";
@@ -62,12 +63,14 @@ function RefreshResults()
     
 }
 
-function LoadPart(path, part)
+function LoadPart(path, part,callback)
 {
     var url = "PageLoader.php";
     $.post( url, {path: path, method: "LoadPage"}, function(data){
         $(part).html(data);
+        callback();
     });
+    
 }
 
 function LoadPage(path)
