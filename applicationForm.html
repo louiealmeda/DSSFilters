@@ -3,6 +3,8 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="applicationForm.css">
+        <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/applicantForm.js"></script>
     </head>
 
     
@@ -13,8 +15,9 @@
             
             <div id = "form">
                 <div id = "overflow">
-                    <form action="amsServer.php" method="post">
-                        <table>
+                    <form action="amsServer.php" method="post" enctype="multipart/form-data" >
+                        <table id="applicationForm">
+                            <input type="hidden" id = "applicationID" name = "applicationID" value="">
 <!--                        ===============================    
                             =Applicant Information Portion=
                             ===============================
@@ -43,13 +46,14 @@
                                     <span class = "fieldname">M.I.</span>
                                     B
                                 </td>
-                                <td width = "16.66%">
-                                    <span class = "fieldname">Date</span>
+                                <td width = "16.66%" rowspan="1">
+                                    <span class = "fieldname">Photo</span>
+                                    <input type="file" name="profilePicture">
                                     
                                 </td>
                             </tr>
                             <tr>
-                                <td  colspan="4">
+                                <td  colspan="3">
                                     <div class = "tablizer">
                                         <span class = "fieldname">Street Address &nbsp;</span>
                                         <input type="text" name = "txtStreetAddress" required>
@@ -59,6 +63,12 @@
                                     <div class = "tablizer">
                                         <span class = "fieldname">Apartment/Unit# &nbsp;</span>
                                         <input type="text" name = "txtUnitNumber" required>
+                                    </div>
+                                </td>
+                                <td  width ="16.6666%" colspan="1">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Birthday</span>
+                                        <input type="date" name = "datetBirthday" required>
                                     </div>
                                 </td>
                             </tr>
@@ -96,6 +106,7 @@
                                         <input type="text" name = "txtEmail" required>
                                     </div>
                                 </td>
+                                
                             </tr>
                             <tr>
                                 <td  colspan="4" >
@@ -112,12 +123,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td  colspan = "6" >
+                                <td  colspan = "4" >
                                     <div class = "tablizer">
                                         <span class = "fieldname">Skills &nbsp;</span>
-                                        <input type="text" name = "txtDesiredSalary" required>
+                                        <input type="text" name="txtSkills">
                                     </div>
                                 </td>
+                                
+                                <td  colspan = "2" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Resume &nbsp;</span>
+                                        <input type="file" name="resume">
+                                    </div>
+                                </td>
+                                
                             </tr>
                             
                             
@@ -154,8 +173,8 @@
                                 <td width = "16.666%" colspan="1">
                                     <span class = "fieldname">Did you graduate? &nbsp;</span>
                                     <div class = "inliner">
-                                        <input type="radio" name = "txtDidGraduated[]" value="1" required>Yes
-                                        <input type="radio" name = "txtDidGraduated[]" value="0" required checked>No
+                                        <input type="radio" name = "DidGraduated[]" value="1" required>Yes
+                                        <input type="radio" name = "DidGraduated[]" value="0" required checked>No
                                     </div>
                                 </td>
                                 <td width="">
@@ -170,7 +189,7 @@
                             </tr>
                             
                             <tr>
-                                <td colspan="6"><input type = "button" style="width:200px;" value="Add new education"></td>
+                                <td colspan="6"><input type = "button" style="width:200px;" value="Add new education" onclick="AddNewEducation(this);"></td>
                             </tr>
                             
                             
@@ -260,7 +279,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="6"><input type = "button" style="width:200px;" value="Add new employment"></td>
+                                <td colspan="6">
+                                    <input type = "button" id="addEmployment" style="width:200px;" value="Add new employment" onclick="AddNewEmployment(this);">
+                                </td>
                             </tr>
                             <tr class="spacer"><td>&nbsp;</td></tr>
                             
@@ -287,7 +308,7 @@ may result in my release.
                                 
                                 <td  colspan="3">
                                     <label style="float:left; width:50%;"><input style="display:inline-block; width:auto;" type="radio" name = "radioAgreement" value="1" required> I Agree</label>
-                                    <label style="float:left; width:50%;"><input style="display:inline-block; width:auto;" type="radio" name = "radioAgreement" value="I Agree" checked> I Disagree</label>
+                                    <label style="float:left; width:50%;"><input style="display:inline-block; width:auto;" type="radio" name = "radioAgreement" value="0" checked> I Disagree</label>
                                 </td>
                                 <td colspan="3" align ="right">
                                 <span class="fieldname">Date</span>
@@ -312,5 +333,127 @@ may result in my release.
 
         </div> 
         <div id = "footer">Company Name Goes Here </div> 
+        
+        <table id = "tmpEducation" style="display:none">
+            <tr>    
+                <td  colspan="3">
+                    <div class = "tablizer">
+                        <span class = "fieldname">School &nbsp;</span>
+                        <input type="text" name = "txtSchool[]" required>
+                    </div>
+                </td>
+                <td  colspan="3" >
+                    <div class = "tablizer">
+                        <span class = "fieldname">Address &nbsp;</span>
+                        <input type="text" name = "txtSchoolAddress[]" required>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td  colspan="3">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Degree &nbsp;</span>
+                        <input type="text" name = "txtDegree[]" required>
+                    </div>
+                </td>
+                <td width = "16.666%" colspan="1">
+                    <span class = "fieldname">Did you graduate? &nbsp;</span>
+                    <div class = "inliner">
+                        <input type="radio" name = "txtDidGraduated[]" value="1" required>Yes
+                        <input type="radio" name = "txtDidGraduated[]" value="0" required checked>No
+                    </div>
+                </td>
+                <td width="">
+                    <span class = "fieldname">From &nbsp;</span>
+                    <input type="date" name ="dateSchoolFrom[]" required>
+                </td>
+
+                <td >
+                    <span class = "fieldname">To &nbsp;</span>
+                    <input type="date" name ="dateSchoolTo[]" required>
+                </td>
+            </tr>
+        </table>
+        <table id = "tmpEmployment" style="display:none">
+            <tr>
+                <td  colspan="4">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Company &nbsp;</span>
+                        <input type="text" name = "txtCompany" required>
+                    </div>
+                </td>
+                <td  colspan="2">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Phone &nbsp;</span>
+                        <input type="text" name = "txtCompanyPhone[]" required>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="4">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Address &nbsp;</span>
+                        <input type="text" name = "txtCompanyAddress[]" required>
+                    </div>
+                </td>
+                <td  colspan="2">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Supervisor &nbsp;</span>
+                        <input type="text" name = "txtCompanySupervisor[]" required>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="2">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Job Title &nbsp;</span>
+                        <input type="text" name = "txtCompanyJobTitle[]" required>
+                    </div>
+                </td>
+                <td  colspan="2">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Starting Salary &nbsp;</span>
+                        <input type="text" name = "txtCompanyStartingSalary[]" required>
+                    </div>
+                </td>
+                <td  colspan="2">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Ending Salary &nbsp;</span>
+                        <input type="text" name = "txtCompanyEndingSalary[]" required>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td  colspan="6">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Responsibilities &nbsp;</span>
+                        <input type="text" name = "txtCompanyResponsibilities[]" required>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td width="">
+                    <span class = "fieldname">From &nbsp;</span>
+                    <input type="date" name ="dateCompanyFrom[]" required>
+                </td>
+
+                <td >
+                    <span class = "fieldname">To &nbsp;</span>
+                    <input type="date" name ="dateCompanyTo[]" required>
+                </td>
+
+                <td  colspan="4">
+                    <div class = "tablizer">
+                        <span class = "fieldname">Reason for leaving &nbsp;</span>
+                        <input type="text" name = "txtCompanyReasonForLeaving[]" required>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </body>
+    
 </HTML>
