@@ -35,6 +35,10 @@
 
 /*Rules for header*/
 
+*{
+/*      border:1px solid red;*/
+}
+
 html, body{
     height: 100%;
     width: 100%;
@@ -52,6 +56,7 @@ body>#content {
     background: -webkit-linear-gradient(#2a2a2a,#232323);
     text-align: center;
     position: relative;
+    padding: 50px;
 }
 
 body>#content>#cell {
@@ -62,9 +67,12 @@ body>#content>#cell {
 }
 
 body>#footer {
-    height: 75px;
+/*    height: 75px;*/
 /*    background:-webkit-linear-gradient(#3877ca,#2057b6);*/
     background-color: #3877ca;
+    text-align: center;
+/*    padding-: 15px;*/
+    line-height: 50px;
 }
 
 body #content #title {
@@ -163,6 +171,8 @@ body #content #title {
 }
 
 #notificationBG>div#window>#content .button{
+    
+    
 /*    background:-webkit-linear-gradient(#3877ca,#2057b6);*/
     background-color: #2057b6;
     display: inline-block;
@@ -185,7 +195,9 @@ body #content #title {
 
 body>#content #form {
 /*    width: 50%;*/
-    margin: 0px 20%;
+    margin: 0px auto;
+    width: 800px;
+/*    min-width: 600px;*/
     height: 100%;
 /*    border: 1px solid red;*/
 /*    box-shadow: 0px 0px 4px black;*/
@@ -193,7 +205,7 @@ body>#content #form {
 }
 body>#content #form>#overflow {
     height: auto;
-    padding-top: 100px;
+    padding-top: 40px;
     color: white;
 }
 
@@ -231,9 +243,10 @@ body>#content #form>#overflow table td{
 }
 
 /*input[type="text"] {*/
-input[type="radio"]
+input[type="button"]
 {
-    
+    cursor: pointer;
+    cursor: hand;
 }
 
 input[type="date"]
