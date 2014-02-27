@@ -11,7 +11,193 @@
 
             <div id = "title">Applicants Management Suit</div>
             
-            <div id = "form">This is a test</div>
+            <div id = "form">
+                <div id = "overflow">
+                    <form action="amsServer.php" method="post">
+                        <table>
+<!--                        ===============================    
+                            =Applicant Information Portion=
+                            ===============================
+-->
+                            <tr class = "sectionTitle" ><td colspan="4">Applicant Information</td></tr>
+                            <tr>
+                                <td width = "35%">
+                                    <span class = "fieldname">Last Name</span>
+                                    Almeda
+                                </td>
+                                <td width = "35%">
+                                    <span class = "fieldname">First Name</span>
+                                    Mark Louie
+                                </td>
+                                <td width = "10%">
+                                    <span class = "fieldname">M.I.</span>
+                                    B
+                                </td>
+                                <td width = "20%">
+                                    <span class = "fieldname">Date</span>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width = "70%" colspan="2">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Street Address &nbsp;</span>
+                                        <input type="text" name = "txtStreetAddress" required>
+                                    </div>
+                                </td>
+                                <td width = "20%" colspan="2">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Apartment/Unit# &nbsp;</span>
+                                        <input type="text" name = "txtUnitNumber" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td width = "35%" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">City, Province &nbsp;</span>
+                                        <input type="text" name = "txtCity" required>
+                                    </div>
+                                </td>
+                                <td width = "35%" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">State/Country &nbsp;</span>
+                                        <input type="text" name = "txtCountry" required>
+                                    </div>
+                                </td>
+                                <td width = "30%" colspan="2" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">ZIP &nbsp;</span>
+                                        <input type="text" name = "txtZIP" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width = "35%" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Phone &nbsp;</span>
+                                        <input type="text" name = "txtPhone" required>
+                                    </div>
+                                </td>
+                                <td width = "65%" colspan="3" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Email &nbsp;</span>
+                                        <input type="text" name = "txtEmail" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width = "50%" colspan="2" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Position Applied for &nbsp;</span>
+                                        <input type="text" name = "txtPositionAppliedFor" required>
+                                    </div>
+                                </td>
+                                <td width = "50%" colspan = "2" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Desired Salary &nbsp;</span>
+                                        <input type="text" name = "txtDesiredSalary" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"><td>&nbsp;</td></tr>
+                            
+<!--                        ===================    
+                            =Education Portion=
+                            ===================
+-->
+                            <tr class = "sectionTitle" ><td colspan="4">Education</td></tr>
+                            <tr>    
+                                <td width = "50%" colspan="1">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">School &nbsp;</span>
+                                        <input type="text" name = "txtSchool[]" required>
+                                    </div>
+                                </td>
+                                <td width = "50%" colspan="3" >
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Address &nbsp;</span>
+                                        <input type="text" name = "txtSchoolAddress[]" required>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width = "35%">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Degree &nbsp;</span>
+                                        <input type="text" name = "txtDegree[]" required>
+                                    </div>
+                                </td>
+                                <td width = "35%">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Did you graduate? &nbsp;</span>
+                                        <div class = "inliner">
+                                            <input type="radio" name = "txtDidGraduated[]" value="1" required>Yes
+                                            <input type="radio" name = "txtDidGraduated[]" value="0" required>No
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="10%">
+                                    <span class = "fieldname">From &nbsp;</span>
+                                    <input type="date" name ="dateSchoolFrom[]" required>
+                                </td>
+                                
+                                <td width = "20%">
+                                    <span class = "fieldname">To &nbsp;</span>
+                                    <input type="date" name ="dateSchoolTo[]" required>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="4"><input type = "button" style="width:200px;" value="Add new education"></td>
+                            </tr>
+                            
+                            
+                            <tr class="spacer"><td>&nbsp;</td></tr>
+<!--                        =============================    
+                            =Previous Employment Portion=
+                            =============================
+-->
+                            <tr class = "sectionTitle" ><td colspan="4">Previous Employment</td></tr>
+                            
+                            <tr>
+                                <td width = "70%" colspan="2">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Company &nbsp;</span>
+                                        <input type="text" name = "txtCompany" required>
+                                    </div>
+                                </td>
+                                <td width = "20%" colspan="2">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Phone &nbsp;</span>
+                                        <input type="text" name = "txtCompanyPhone[]" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width = "" colspan="1">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Address &nbsp;</span>
+                                        <input type="text" name = "txtCompanyAddress[]" required>
+                                    </div>
+                                </td>
+                                <td width = "" colspan="3">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Supervisor &nbsp;</span>
+                                        <input type="text" name = "txtCompanySupervisor[]" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr class="spacer"><td>&nbsp;</td></tr>
+                            
+                        </table>
+                    
+                    </form>
+                </div>
+            </div>
 
         </div> 
         <div id = "footer">ads </div> 

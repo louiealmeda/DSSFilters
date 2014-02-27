@@ -27,7 +27,7 @@
 }
 
 *{
-/*    border:1px solid red;*/
+/*    outline:1px solid red;*/
     font-family:"Open Sans";
     -webkit-transition:0.2s;
     -webkit-font-smoothing:antialiased;
@@ -51,6 +51,7 @@ body>#content {
     height: 100%;
     background: -webkit-linear-gradient(#2a2a2a,#232323);
     text-align: center;
+    position: relative;
 }
 
 body>#content>#cell {
@@ -67,7 +68,7 @@ body>#footer {
 }
 
 body #content #title {
-    position: relative;
+    position: absolute;
     z-index: 9;
     background-color: #2a2a2a;
     cursor: pointer;
@@ -82,7 +83,7 @@ body #content #title {
 /*    padding:0px 0px 0px 30px;*/
     text-shadow:0px 0px 4px black;
     -webkit-user-select: none;
-    padding-left: 20px;
+/*    padding-left: 20px;*/
     line-height: 60px;
 /*    box-shadow: 0 5px 5px -4px black;*/
     box-shadow: 0px 0px 4px black;
@@ -185,5 +186,113 @@ body #content #title {
 body>#content #form {
 /*    width: 50%;*/
     margin: 0px 20%;
-    border: 1px solid red;
+    height: 100%;
+/*    border: 1px solid red;*/
+/*    box-shadow: 0px 0px 4px black;*/
+    overflow-y: scroll;
+}
+body>#content #form>#overflow {
+    height: auto;
+    padding-top: 100px;
+    color: white;
+}
+
+body>#content #form>#overflow table {
+    
+    width: 100%;
+    text-align: left;
+    border-spacing: 0px;
+    border-collapse:collapse;
+}
+
+body>#content #form>#overflow table .spacer td{
+    border: 1px solid transparent;
+}
+
+body>#content #form>#overflow table .sectionTitle td{
+    border-radius: 10px 10px 0px 0px;
+    background-color: #535353;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    text-indent: 5px;
+}
+
+body>#content #form>#overflow table td{
+    border: 1px solid #464646;
+    margin: 10px !important;
+    box-sizing: content-box;
+    padding: 5px;
+    
+}
+
+.fieldname {
+    color: #4092fd;
+    font-size: 0.8em;
+}
+
+/*input[type="text"] {*/
+input[type="radio"]
+{
+    
+}
+
+input[type="date"]
+{
+    width: 100px;
+    max-width: 120px;
+    font-size: 0.7em;
+}
+
+input {
+    font-size: 1em;
+    color: white;
+    width: 100%; 
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    background: none !important;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+input:hover {
+    border: 1px solid white;
+}
+
+
+input:focus {
+    outline: none !important;
+    border: 1px solid #3877ca;
+}
+
+.inliner{
+    display: block;
+}
+
+.inliner>*{
+    display: inline-block;
+    width: 15%;
+    white-space: nowrap;
+}
+
+.tablizer {
+    display: table;
+    width: 100%;
+}
+
+.tablizer>*{
+    width: 100%;
+}
+
+.tablizer>*:nth-child(1){
+    width:1%;
+    white-space:nowrap;
+}
+
+.tablizer>*:nth-child(2){
+    width: 100%;
+}
+
+.tablizer>*{
+    display: table-cell;
 }
