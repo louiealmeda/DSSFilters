@@ -3,8 +3,14 @@ $(document).ready(function(){
     
     str = str.replace("?", "");
     $("#applicationID").attr( "value", str );
+    
+    $.post("amsServer.php", { method: "fetchApplicationName", urlID:str}, function(data){
+        data = data.split("<break>");
+        $("#lastName").html(data[0]);
+        $("#firstName").html(data[1]);
+    });
+    
 });
-
 
 function AddNewEmployment(sender)
 {

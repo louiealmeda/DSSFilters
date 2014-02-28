@@ -18,16 +18,38 @@ function ToggleEdit()
 
 function AddNewProfile()
 {
+    
+    var nameFields = "<div>Last Name:<input type = 'text' id = 'newLastName'><br>First Name<input type = 'text' id = 'newFirstName'></div>";
+    
     MessageBox.Show('Create New Applicant Profile', 'How do you want the profile to be created?', 
-                    [ {'title':'I will do it', 'callBack':function(){
-                        MessageBox.Hide();
-                    }} ,
-                    {'title':'Let the applicant fill up a form','callBack':function(){
-                        MessageBox.Show('Application form link', 'Please copy then send the link to the applicant',
-                                        [{'title':'Copy link and close', 'callBack':function(){
-                            MessageBox.Hide();
-                        }} ]);
-                    }} ]);
+                    [ {'title':'I will do it', 'callBack':msgCb1}, {'title':'Let the applicant fill up a form','callBack':msgCb2} ]);
+    
+    function msgCb1(){
+        MessageBox.Hide();
+    }
+    
+    function msgCb2(){
+        MessageBox.Show("Application form", "Enter applicant's name" + nameFields,
+                        [{'title':'Next', 'callBack':msgCb2_1}]);
+        
+        function msgCb2_1()
+        {
+            
+            $.post( "amsServer.php", { lastName:$("#newLastName").val(), firstName:$("#newFirstName").val(), method: "GenerateApplicantFormID" }, function(data){
+                
+                var applicationUrl = window.location.host + "/DSSFilters/applicationForm.html?" + data;
+                var idField = "<input type = 'text' id = 'applicationID' value ='"+applicationUrl+"'>";
+
+                MessageBox.Show('Application form link', 'Please copy then send the link to the applicant' + idField,
+                            [{'title':'Copy link and close', 'callBack':msgCb2_2}]);
+            
+            });
+            function msgCb2_2(){
+                MessageBox.Hide();
+            }
+        }
+        
+    }
 }
 
 function ToggleTextBoxes(value)
