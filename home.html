@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/home.css">
+        <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/home.js"></script>
+    </head>
+
+    
+    <body>
+        <div id = "header">
+            <div id = "login">Login</div>
+            <ul>
+                <li id = "headerTitleContainer" class="headerTitle">
+                    Applicants Management Suite
+                </li> 
+                <li id = "navBar">
+                    <ul>
+                        <li id = "1" class = "selected">Optimize your work</li>
+                        <li id = "2">How it works</li>
+                        <li id = "3">Start now</li>
+                    </ul>
+                </li>
+                
+            </ul>
+            
+        </div>
+        <div id = "line"></div>
+        <div id = "slider"></div>
+        
+        <div id = "signUpform">
+            <form method ="post" action="amsServer.php">
+                <input type="hidden" name = "method" value="SignUp">
+                <div id = "title">Lorem Ipsum</div>
+                
+                <table>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td><input type = "text" name="txtLastName" required> </td>
+                    </tr>
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input type = "text" name="txtFirstName" required> </td>
+                    </tr>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type = "text" id = "txtUserName" name="txtUserName" onchange="checkUsername(this)" required> </td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type = "text" name="txtEmail" required> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Company Name:</td>
+                        <td><input type = "text" name="txtCompany" required> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type = "password" id = "txtPassword" name="txtPassword" onkeyup="validatePassword(this)" required> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Confirm Password:</td>
+                        <td><input type = "password" id = "txtConfirmPassword" name="txtConfirmPassword" onkeyup="validatePassword(this,true)" required> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;"><input id = "submitBtn" type="submit" value = "Register"></td>
+                    </tr>
+                </table>
+            </form>
+        
+        </div>
+        
+    </body>
+    
+    
+</html>

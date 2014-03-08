@@ -11,12 +11,13 @@
     <body>
         <div id = "content">
 
-            <div id = "title">Applicants Management Suit</div>
+            <div id = "title">Applicants Management Suite</div>
             
             <div id = "form">
                 <div id = "overflow">
                     <form action="amsServer.php" method="post" enctype="multipart/form-data" >
                         <table id="applicationForm">
+                            <input type="hidden" name = "method" value="SaveApplicantForm">
                             <input type="hidden" id = "applicationID" name = "applicationID" value="">
 <!--                        ===============================    
                             =Applicant Information Portion=
@@ -42,6 +43,7 @@
                                     <span class = "fieldname">First Name</span>
                                     <span id = "firstName"></span>
                                 </td>
+                                
                                 <td width = "16.66%">
                                     <div class = "tablizer">
                                         <span class = "fieldname">M.I. &nbsp;</span>
@@ -54,6 +56,26 @@
                                     
                                 </td>
                             </tr>
+                            
+                            <tr>
+                                <td colspan="5">
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Overview &nbsp;</span>
+                                        <textarea name = "txtOverview" required></textarea>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class = "tablizer">
+                                        <span class = "fieldname">Gender &nbsp;</span>
+                                        <select name = "selectGender" required>
+                                            <option>Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            
                             <tr>
                                 <td  colspan="3">
                                     <div class = "tablizer">
@@ -70,7 +92,7 @@
                                 <td  width ="16.6666%" colspan="1">
                                     <div class = "tablizer">
                                         <span class = "fieldname">Birthday</span>
-                                        <input type="date" name = "datetBirthday" required>
+                                        <input type="date" name = "dateBirthday" required>
                                     </div>
                                 </td>
                             </tr>
@@ -207,7 +229,7 @@
                                 <td  colspan="4">
                                     <div class = "tablizer">
                                         <span class = "fieldname">Company &nbsp;</span>
-                                        <input type="text" name = "txtCompany" required>
+                                        <input type="text" name = "txtCompany[]" required>
                                     </div>
                                 </td>
                                 <td  colspan="2">

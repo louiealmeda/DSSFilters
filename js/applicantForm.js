@@ -6,7 +6,7 @@ $(document).ready(function(){
     
     $.post("amsServer.php", { method: "fetchApplicationName", urlID:str}, function(data){
         data = data.split("<break>");
-        $("#lastName").html(data[0]);
+        $(  "#lastName").html(data[0]);
         $("#firstName").html(data[1]);
     });
     

@@ -37,11 +37,14 @@ function AddNewProfile()
             
             $.post( "amsServer.php", { lastName:$("#newLastName").val(), firstName:$("#newFirstName").val(), method: "GenerateApplicantFormID" }, function(data){
                 
-                var applicationUrl = window.location.host + "/DSSFilters/applicationForm.html?" + data;
-                var idField = "<input type = 'text' id = 'applicationID' value ='"+applicationUrl+"'>";
+                if(data != "wrong")
+                {
+                    var applicationUrl = window.location.host + "/DSSFilters/applicationForm.html?" + data;
+                    var idField = "<input type = 'text' id = 'applicationID' value ='"+applicationUrl+"'>";
 
-                MessageBox.Show('Application form link', 'Please copy then send the link to the applicant' + idField,
-                            [{'title':'Copy link and close', 'callBack':msgCb2_2}]);
+                    MessageBox.Show('Application form link', 'Please copy then send the link to the applicant' + idField,
+                                [{'title':'Copy link and close', 'callBack':msgCb2_2}]);
+                }
             
             });
             function msgCb2_2(){
