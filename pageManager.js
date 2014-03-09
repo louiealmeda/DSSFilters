@@ -8,6 +8,7 @@ function Create2DArray(rows) {
   return arr;
 }
 
+sessionCheck(false);
 
 $(document).ready(function(){
     
@@ -53,6 +54,15 @@ $(document).ready(function(){
 
 });
 
+
+function Logout()
+{
+    $.post("amsServer.php", {method:"logout"}, function(data){
+        alert(data);
+        window.location.replace("home.html");
+        
+    });
+}
 
 function RefreshResults()
 {

@@ -11,6 +11,18 @@ switch($_POST['method'])
         SessionCheck();
         break;
     
+    case "logout":
+        session_start();
+        if( session_destroy())
+            echo "out";
+        else
+            echo "not";
+        break;
+    
+    case "Login":
+        Login();
+        break;
+    
     case "CheckUserName":
         CheckUserName();
         break;
@@ -23,6 +35,10 @@ switch($_POST['method'])
         GenerateApplicantFormID();
         break;
 
+    case "CheckApplicationFormValidity":
+        CheckApplicationFormValidity();
+        break;
+    
     case "SaveApplicantForm":
         SaveApplicantForm();
         break;
@@ -34,6 +50,41 @@ switch($_POST['method'])
     case "GetFoldersWithContent":
         GetFoldersWithContent();
         break;
+    
+}
+
+function Login()
+{   
+    sanitizePost();
+    
+    $query = "SELECT HRManagerID, password FROM HRManager WHERE username = '{$_POST['txtUsername']}'";
+    
+    $ret = mysql_query($query);
+    
+    if(!$ret)
+        die(mysql_error());
+    else
+    {
+        $row = mysql_fetch_assoc($ret);
+        if($row['HRManagerID'] == "")
+            echo "username does not exist";
+        else
+        {
+            
+            if($_POST['txtPassword'] == $row['password'])
+            {
+                session_start();
+                $_SESSION['username'] = $_POST['txtUsername'];
+                $_SESSION['HRID'] = $row['HRManagerID'];
+                header("Location: index.html");
+            }
+            else
+                echo "Wrong password";
+        }
+    }
+    
+    /////////Check if user exist
+    
 }
 
 function CheckUserName()
@@ -68,6 +119,9 @@ function SignUp()
     if(!$ret)
         die(mysql_error());
     
+    
+    session_start();
+    $_SESSION['username'] = $_POST['txtUserName'];
     echo "Success";
     
 }
@@ -81,14 +135,34 @@ function fetchApplicationName()
 {
     $url = $_POST['urlID'];
     
-    $query = "SELECT firstName, lastName FROM applicationForm WHERE URLID = '$url'";
+    $query = "SELECT firstName, lastName, HRID FROM applicationForm WHERE URLID = '$url'";
+    
     
     $ret = mysql_query($query);
     
     if($ret)
     {
         $ret = mysql_fetch_assoc($ret);
-        echo $ret['lastName'] . "<break>" . $ret['firstName'];
+        
+        if($ret['lastName'] == "")
+        {
+            die("invalid");
+        }
+        
+        echo $ret['lastName'] . "<break>" . $ret['firstName']."<break>";
+//        echo $ret['HRID'] . "[[]]]]";
+        
+        $query = "SELECT company FROM HRManager WHERE HRManagerID = {$ret['HRID']}";
+        $ret = mysql_query($query);
+        
+        if($ret)
+        {
+            $ret = mysql_fetch_assoc($ret);
+            echo $ret['company'];
+        }
+        else
+            die(mysql_error());
+        
     }
     else
         die(mysql_error());
@@ -125,8 +199,10 @@ function GenerateApplicantFormID()
     $last = mysql_real_escape_string($last);
     $first = mysql_real_escape_string($first);
     
-    $query = "INSERT INTO applicationForm(lastName, firstName, URLID) VALUES('$last', '$first', '$url')";
     
+    session_start();
+    $HRID = $_SESSION['HRID'];
+    $query = "INSERT INTO applicationForm(HRID, lastName, firstName, URLID) VALUES($HRID, '$last', '$first', '$url')";
     
     
     $ret = mysql_query($query);
@@ -137,25 +213,8 @@ function GenerateApplicantFormID()
 }
 
 
-function SaveApplicantForm()
+function CheckApplicationFormValidity()
 {
-    //////////REMOVE THIS AFTERWARDS
-    $_POST["urlID"] = "wkAwpjKqD3qByBMPXMHZxYZMSLwdTb1DA1zpX0TZ20an9n1Vx9uiWKumTgFk";
-    $_POST['selectGender'] = 'male';
-    $_POST['txtDesiredSalary'] = implode("", explode("," , trim($_POST['txtDesiredSalary'])));
-    $_POST['txtOverview'] = "test";
-    echo "<pre>";
-    print_r($_POST);
-    print_r($_FILES);
-    echo "</pre>";
-    
-    //////////////
-    
-    foreach ($_POST as $value)
-    {
-        $value = mysql_real_escape_string($value);
-    }
-    
     $url = $_POST['urlID'];
     
     $query = "SELECT firstName, lastName, HRID FROM applicationForm WHERE URLID = '$url'";
@@ -173,6 +232,55 @@ function SaveApplicantForm()
         $lastName = $ret['lastName'];
         $HRID = $ret['HRID'];
         
+        
+        if($firstName == "")
+            header("index.html");
+        
+    }
+    else
+        die(mysql_error());
+}
+
+
+function SaveApplicantForm()
+{
+    //////////REMOVE THIS AFTERWARDS
+//    $_POST["urlID"] = "wkAwpjKqD3qByBMPXMHZxYZMSLwdTb1DA1zpX0TZ20an9n1Vx9uiWKumTgFk";
+//    $_POST['selectGender'] = 'male';
+//    $_POST['txtDesiredSalary'] = implode("", explode("," , trim($_POST['txtDesiredSalary'])));
+//    $_POST['txtOverview'] = "test";
+//    echo "<pre>";
+//    print_r($_POST);
+//    print_r($_FILES);
+//    echo "</pre>";
+    
+    //////////////
+    
+    sanitizePost();
+    
+    $url = $_POST['applicationID'];
+    
+    $query = "SELECT firstName, lastName, HRID FROM applicationForm WHERE URLID = '$url'";
+    
+    $ret = mysql_query($query);
+//    echo $query;
+    $firstName = "";
+    $lastName = "";
+    $HRID = "";
+    
+    if($ret)
+    {
+        $ret = mysql_fetch_assoc($ret);
+        
+//        print_r($ret);
+        
+        $firstName = $ret['firstName'];
+        $lastName = $ret['lastName'];
+        $HRID = $ret['HRID'];
+        
+        
+        if($firstName == "")
+            header("index.html");
         
     }
     else
@@ -221,11 +329,13 @@ function SaveApplicantForm()
         -1
     );";
     
+//    echo $query;
+    
     $ret = mysql_query($query);
     
     if($ret)
     {
-        print_r(mysql_fetch_assoc($ret));
+//        print_r(mysql_fetch_assoc($ret));
         
         $query = "SELECT applicantProfileID FROM applicantProfile ORDER BY applicantProfileID DESC LIMIT 1 ";
         $id = mysql_fetch_assoc(mysql_query($query))['applicantProfileID'];
@@ -268,6 +378,17 @@ function SaveApplicantForm()
         move_uploaded_file($picture['tmp_name'], "files/profilePictures/$id.$pictureExt");
         move_uploaded_file($resume['tmp_name'], "files/resumes/$id.pdf");
         
+        
+        
+        //////////Remove applicationFormID
+        $query = "DELETE FROM applicationForm WHERE URLID = '$url'";
+    
+        $ret = mysql_query($query);
+        if(!$ret)
+            die(mysql_error());
+        
+        header("Location: ThankYou.html");
+        
     }
     else
         die(mysql_error());
@@ -286,6 +407,14 @@ function SessionCheck()
         header("Location: home.html");
     }
     
+}
+
+function sanitizePost()
+{
+    foreach ($_POST as $value)
+    {
+        $value = mysql_real_escape_string($value);
+    }
 }
 
 ?>

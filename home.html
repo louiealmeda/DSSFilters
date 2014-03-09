@@ -4,14 +4,17 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="styles/home.css">
+        <script type="text/javascript" src="utilities.js"></script>
         <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/home.js"></script>
     </head>
 
     
     <body>
+        <div id = "login"> Login</div>
+            
         <div id = "header">
-            <div id = "login">Login</div>
+            
             <ul>
                 <li id = "headerTitleContainer" class="headerTitle">
                     Applicants Management Suite
@@ -25,8 +28,17 @@
                 </li>
                 
             </ul>
-            
+
         </div>
+              
+        <div id = "loginForm">
+            <form action="amsServer.php" method="post">
+                <input type="text" name = "txtUsername" placeholder="username">
+                <input type="password" name = "txtPassword" placeholder="password">
+                <input type = "submit" id = "submitBtn" name="method" value="Login">
+            </form>
+        </div>
+        
         <div id = "line"></div>
         <div id = "slider"></div>
         

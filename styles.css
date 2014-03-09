@@ -189,6 +189,7 @@ body>#header {
 }
 
 #profileMenu {
+    
     cursor:pointer;
     cursor:hand;
     font-family:"Sansation";
@@ -244,8 +245,12 @@ body>#header {
     list-style:none;
     text-align:right;
 /*    width:100%;*/
-
     
+    
+}
+
+#profileMenu a{
+    text-decoration: none;
 }
 
 #profileMenu ul li:hover{

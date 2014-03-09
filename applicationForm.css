@@ -204,9 +204,10 @@ body>#content #form {
     overflow-y: scroll;
 }
 body>#content #form>#overflow {
-    height: auto;
+    height: 90%;
     padding-top: 40px;
     color: white;
+    position: relative;
 }
 
 body>#content #form>#overflow table {
@@ -309,4 +310,24 @@ input:focus, textarea:focus{
 
 .tablizer>*{
     display: table-cell;
+}
+
+#message {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.2em;
+    
+    width: 450px;
+    height: 50px;
+}
+
+
+#message span{
+    display: block;
+    font-size: 0.8em;
 }

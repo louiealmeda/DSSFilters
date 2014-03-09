@@ -1,6 +1,7 @@
 $(document).ready(function(){
 //    alert();
 //    validatePassword(null, true);
+    sessionCheck(true);
 });
 
 

@@ -5,9 +5,15 @@ $(document).ready(function(){
     $("#applicationID").attr( "value", str );
     
     $.post("amsServer.php", { method: "fetchApplicationName", urlID:str}, function(data){
+        if(data == "invalid")
+            window.location.replace("home.html");
+        
+
         data = data.split("<break>");
-        $(  "#lastName").html(data[0]);
+        $("#lastName").html(data[0]);
         $("#firstName").html(data[1]);
+        $("#footer").html(data[2]);
+        
     });
     
 });
