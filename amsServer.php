@@ -7,6 +7,28 @@ $db->connect();
 
 switch($_POST['method'])
 {
+    
+    
+    
+    case "LoadProfile":
+        LoadProfile();
+        break;
+    
+    case "DeleteProfile":
+        DeleteProfile();
+        break;
+    
+    case "ChangeFolder":
+        ChangeFolder();
+        break;
+    
+    case "DeleteFolder":
+        DeleteFolder();
+        break;
+    
+    case "addFolder":
+        AddFolder();
+        break;
     case "SessionCheck":
         SessionCheck();
         break;
@@ -51,6 +73,53 @@ switch($_POST['method'])
         GetFoldersWithContent();
         break;
     
+}
+
+
+
+function LoadProfile()
+{
+    $profileID = $_POST['profileID'];
+    
+//    $query = "SELECT * FROM applicantProfile as a, educationHistory as b, employmentHistory as c 
+//    WHERE a.applicantProfileID = $profileID AND b.applicantProfileID = $profileID AND c.applicantProfileID = $profileID" ;
+    
+//    $query = "SELECT * FROM applicantProfile WHERE applicantProfileID = $profileID";
+//    $query = "SELECT * FROM educationHistory WHERE applicantProfileID = $profileID";
+    
+    echo '{"personal":';
+    QueryToJSON("SELECT * FROM applicantProfile WHERE applicantProfileID = $profileID");
+    echo ',"education":[';
+    QueryToJSON("SELECT * FROM educationHistory WHERE applicantProfileID = $profileID");
+    echo '],"employment":[';
+    QueryToJSON("SELECT * FROM employmentHistory WHERE applicantProfileID = $profileID");
+    echo ']}';
+    
+}
+
+
+function QueryToJSON($query)
+{
+    $ret = mysql_query($query);
+    
+    if($ret)
+    {
+        $isMoreThanOne = false;
+        while($row = mysql_fetch_assoc($ret))
+        {
+            if($isMoreThanOne)
+                echo ",";
+            
+            echo json_encode($row);
+//            print_r($row);
+            $isMoreThanOne = true;
+         
+        }
+    }
+    else
+    {
+        die(mysql_error());
+    }
 }
 
 function Login()
@@ -126,8 +195,112 @@ function SignUp()
     
 }
 
+
+function DeleteProfile()
+{
+    session_start();
+    $query = "DELETE FROM applicantProfile WHERE HRManagerID = {$_SESSION[HRID]} AND applicantProfileID = {$_POST['profileID']}";
+    $ret = mysql_query($query);
+
+    if(!$ret)
+        die(mysql_error());
+
+    
+    GetFoldersWithContent();
+}
+
+function DeleteFolder()
+{
+    session_start();
+    $query = "DELETE FROM folder WHERE HRManagerID = {$_SESSION[HRID]} AND folderID = {$_POST['folderID']}";
+    $ret = mysql_query($query);
+
+    if(!$ret)
+        die(mysql_error());
+    
+    $query = "UPDATE applicantProfile SET folderID= -1 WHERE HRManagerID = {$_SESSION[HRID]} AND folderID = {$_POST['folderID']}";
+    $ret = mysql_query($query);
+
+    if(!$ret)
+        die(mysql_error());
+    
+    
+    GetFoldersWithContent();
+}
+
+
+function ChangeFolder()
+{
+    session_start();
+    $query = "UPDATE applicantProfile SET folderID = {$_POST['folderID']} WHERE HRManagerID = {$_SESSION[HRID]} AND applicantProfileID = {$_POST['profileID']}";
+    $ret = mysql_query($query);
+
+    if(!$ret)
+        die(mysql_error());
+    
+    GetFoldersWithContent();
+}
+
+function AddFolder()
+{
+    session_start();
+    $query = "INSERT INTO folder(name, HRManagerID) VALUES('{$_POST['name']}', {$_SESSION[HRID]})";
+    $ret = mysql_query($query);
+
+    if(!$ret)
+        die(mysql_error());
+    
+    GetFoldersWithContent();
+}
+
 function GetFoldersWithContent()
 {
+    $filter = "";
+    
+    if(isset($_POST['nameFilter']))
+    {
+        $key = $_POST['nameFilter'];
+        $filter = " AND (a.firstName LIKE '%$key%' OR a.lastName LIKE '%$key%') ";
+    }
+    session_start();
+    $query = "SELECT applicantProfileID, a.firstName, a.lastName, a.middleInitial , folderID 
+    FROM applicantProfile as a WHERE HRManagerID = {$_SESSION['HRID']} $filter
+    ORDER BY a.lastName ASC
+    ";
+    
+    $folders = mysql_query("SELECT name, folderID FROM folder WHERE HRManagerID = {$_SESSION['HRID']} 
+    ORDER BY name ASC");
+    
+    
+    if($folders)
+    {
+        while($row = mysql_fetch_assoc($folders))
+        {
+            echo  "{$row['folderID']}, {$row['name']}|";
+     
+        }
+    }
+    else
+        die(mysql_error());
+    
+    echo "-1, unsorted";
+//    echo "-2, pending";
+    echo "<break>";
+    
+    $ret = mysql_query($query);
+    if($ret)
+    {
+        $separator = "";
+        while($row = mysql_fetch_assoc($ret))
+        {
+        echo $separator. $row['folderID'] . "|" . $row['lastName'] . ", " . $row['firstName'] . " " . $row['middleInitial'] . ". |" . $row['applicantProfileID'];
+            $separator = "][";
+        }
+    }
+    else
+        die(mysql_query());
+    
+
     
 }
 

@@ -19,23 +19,27 @@
 
                 <div id = "profileContentContainer">
                     <div>
-                        <table id = "profileContent">
+                        <table id = "profileContent" >
                             <tr>
-                                <td id = "profilePictureTd" rowspan="5"><img width = "100px" height="100px"></td>
-                                <td id = "profileDescriptionCol"> Name: </td>
-                                <td id = "profileValuesCol"> <input type="text"/ value="Juan" disabled> </td>
+                                <td id = "profilePictureTd" rowspan="5"><img id = "profilePicture" width = "100px" height="100px"></td>
+                                <td id = "profileDescriptionCol"> <span class = "label">First Name</span> </td>
+                                <td id = "profileValuesCol"> <input id = "firstName" type="text"/ value="Juan" disabled> </td>
                             </tr>
                             <tr>
-                                <td> Last Name: </td>
-                                <td id = "profileValuesCol"> <input type="text"/ value="Delacruz" disabled></td>
+                                <td><span class = "label"> M.I.</span> </td>
+                                <td id = "profileValuesCol"> <input id = "middleInitial" type="text"/ value="Delacruz" disabled></td>
                             </tr>
                             <tr>
-                                <td> Email: </td>
-                                <td id = "profileValuesCol"> <input type="text"/ value="juan.delacruz@gmail.com" disabled></td>
+                                <td><span class = "label"> Last Name</span> </td>
+                                <td id = "profileValuesCol"> <input id = "lastName" type="text"/ value="Delacruz" disabled></td>
                             </tr>
                             <tr>
-                                <td> Folder: </td>
-                                <td id = "profileValuesCol"> Short List  </td>
+                                <td><span class = "label"> Email</span> </td>
+                                <td id = "profileValuesCol"> <input id = "email" type="text"/ value="juan.delacruz@gmail.com" disabled></td>
+                            </tr>
+                            <tr>
+                                <td><span class = "label"> Folder </span></td>
+                                <td id = "profileValuesCol"> <span id= "folderName"></span></td>
                             </tr>
                             <tr></tr>
                             <tr><td colspan="3"><hr></td></tr>
@@ -59,8 +63,8 @@
         
         <td id = "foldersPane">
             <div id = "foldersHeader">
-                Folders <div id = "add">+</div>
-                <input type="text" id = "search" class="customTextBox" placeholder="Search">
+                Folders <div id = "add" onclick="AddFolder()">+</div>
+                <input type="text" id = "search" class="customTextBox" onkeyup="filterProfiles(this)" placeholder="Search">
             </div>
             <ul id = "folders">
                 <li class="hidden">

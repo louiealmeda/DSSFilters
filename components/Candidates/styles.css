@@ -118,11 +118,51 @@
 /*    border: 1px solid red;*/
 }
 
+.cp #foldersPane #folders li.active{
+    background-color: #66b5ef;
+    padding-left: 5px;
+}
+
+.cp #foldersPane #folders li .delete{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    float: right;
+    position: absolute;
+    line-height: 13px;
+    
+    right: 6px;
+    top: 4px;
+    color: #A00;
+    
+/*
+    top: -100px;
+    right: 100px;
+*/
+    background-color: transparent;
+    text-align: center;
+    border-radius: 2px;
+    overflow-x: hidden;
+}
+
+.cp #foldersPane #folders li .delete:hover{
+    color: black;
+    background-color: #A00;
+}
+
+.cp #foldersPane #folders>li>div>span{
+    color: black;
+    background-color: #66b5ef;
+    padding: 0px 5px;
+    font-size: 0.8em;
+    border-radius: 2px;
+}
+
 .cp #foldersPane *{
     padding: 0px;
     margin: 0px;
     width: 100%;
-    transition: 0.5s;
+    transition: 0s all, margin 0.2s, padding 0.2s;
 }
 
 .cp #foldersPane li{
@@ -130,13 +170,17 @@
 /*    width: 100%;*/
     cursor: pointer;
     cursor: hand;
+    overflow-x: hidden;
 }
 
 .cp #foldersPane #folders>li:hover div{
 /*    background-color: blue;*/
+/*    margin-left: -10px;*/
+    padding-left: 5px;
 }
 
 .cp #foldersPane #folders>li>div{
+    position: relative;
     padding-left: 15px;
 /*    background:-webkit-linear-gradient(#66b5ef,#3978cb );*/
 /*    background: -webkit-linear-gradient(#2a2a2a,#222);*/
@@ -144,6 +188,8 @@
 /*    border-radius: 3px 3px 0px 0px;*/
     color: white;
     -webkit-user-select:none;   
+/*    display: inline-block;*/
+/*    width: auto;*/
     border-top: 1px solid rgba(255,255,255,0.2);
     border-bottom: 1px solid black;
 }
@@ -151,24 +197,32 @@
 .cp #foldersPane #folders>li ul{
     transition: 0.5s;
     height: auto;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .cp #foldersPane #folders>li.hidden ul{
-    height: 0px;
-    overflow: hidden;
+/*    height: 0px;*/
+    overflow-x: hidden;
+    max-height: 0px;
 }
 
 .cp #foldersPane #folders>li{
 /*    padding-left: 15px;*/
+/*    position: relative;*/
+    
 }
 
 .cp #foldersPane .group li{
     padding-left: 30px;
+    position: relative;
 /*    margin-left: 15px;*/
 }
 
 .cp #foldersPane .group li:hover{
-    background-color: gray;
+    background-color: #add1eb;
+    padding-left: 5px;
 }
 
 
@@ -197,6 +251,8 @@
 .cp #profileTabs li:hover{
 /*    border-bottom: 2px solid #00a2ff;   */
     color:black;
+    padding-right: 5px;
+    padding-left: 10px;
     background-color: rgba(255,255,255,0.5);
 }
 
@@ -239,6 +295,7 @@
     display: table-cell;
     width: 80%;
     height: 100%;
+    
 }
 
 .cp #profileContentContainer>div{
@@ -255,7 +312,18 @@
 /*    border: 1px solid red;*/
     width:75%;   
     height:95%;
+    border-collapse: collapse;
+	border-spacing: 0;
+    
 }
+
+.cp #profileContent>*>* {
+    margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
 
 
 .cp #profilePictureTd{
@@ -265,7 +333,7 @@
 }
 
 #profileValuesCol {
-    width:80%;
+    width:70%;
 }
 
 #profileDescriptionCol {
@@ -276,12 +344,16 @@
     width:auto;
     margin:0px;
     padding:0px;
-    display:block;
+/*    display:block;*/
     height:100%;
     font-size:1em;
     resize:none;
-    background-color:transparent;
-
+    
+    outline: none !important;
+    border: none !important;
+    background-color: #d3d3d3;
+    border-radius: 3px;
+    margin: 3px;
 }
 
 .cp #profileContent textarea
@@ -300,6 +372,7 @@
 }
 
 .cp #profileContent input:disabled {
+    background-color:transparent;
     color:black;
     box-shadow:none;
     border:none;
@@ -380,6 +453,14 @@
     width:30%;
 /*    border:1px solid red;*/
     display:inline-block;
+}
+
+.cp span.label{
+    background-color: #66b5ef;
+    padding: 0px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    margin: 0px 5px;
 }
 
 .info input {
