@@ -1,3 +1,9 @@
+hr{
+    border: 1px solid #66b5ef !important;
+    outline: none !important;
+    border-radius: 2px;
+}
+
 .cp{
     height: 100%;
 /*    border:1px solid red;*/
@@ -311,7 +317,7 @@
     position:absolute;
 /*    border: 1px solid red;*/
     width:75%;   
-    height:95%;
+    height:100%;
     border-collapse: collapse;
 	border-spacing: 0;
     
@@ -436,7 +442,8 @@
     display:block;
     width:100%;
     height:auto;
-/*    border: 1px solid red;*/
+    max-height: 350px;
+    overflow-y: scroll;
 }
 
 .cp #AddressList {
@@ -465,4 +472,121 @@
 
 .info input {
     width:100%;
+}
+
+ul#filters {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+ul#filters input{
+    border: none !important;
+    outline: none !important;
+    background-color: #EEE;
+    border-radius: 3px;
+    font-size: 0.95em;
+}
+
+ul#filters input:focus{
+    border: none !important;
+    outline: none !important;
+}
+
+
+ul#filters li{
+    position: relative;
+    padding: 5px 0px;
+    padding-left: 8%;
+    padding-right: 5px;
+    border-bottom: 1px solid #DDD; 
+}
+ul#filters li>*{
+    margin: 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+ul#filters li div.filterHandle {
+/*    display: inline-block;*/
+/*    float: left;*/
+    left: -4%;
+    position: absolute;
+    width: 4%;
+    top: 2.5%;
+    height: 95%;
+    background-color: #EEE;
+    cursor: pointer;
+    cursor: hand;
+    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+ul#filters li div.filterHandle:hover{
+    background-color: #DDD;
+/*
+    width: 7%;
+    left: -7%;
+*/
+}
+
+ul#filters li .selectionBox{
+    position: relative;
+    height: auto;   
+    min-height: 50px;
+    margin: 5px 0px;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 200px;
+/*    border: 1px solid red;*/
+    padding: 5px;
+    background-color: #EEE;
+    border-radius: 5px;
+}
+
+ul#filters li .selectionBox>span{
+    background-color: #0AF;
+    color: white;
+    border-radius: 5px;
+    margin: 2px 2px;
+    padding: 0px 5px;
+    display: inline-block;
+}
+
+#filters .selectionBox>span>span{
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    cursor: hand;
+    margin: 2px;
+}
+
+#filters .selectionBox>span>span:hover{
+    color: #555;
+    
+}
+
+ul#filters li .autocompleteContainer {
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    overflow-x: hidden;
+/*    border: 1px solid red;*/
+    margin: 0px;
+    padding: 0px;  
+}
+
+ul#filters li .autocompleteContainer * {
+/*    display: inline-block;*/
+/*    float: left;*/
+/*    position: absolute;*/
+    margin: 0px;
+    padding: 0px;
+}
+
+ul#filters li #amount>span {
+    color: #0AF;
+    font-size: 0.9em;
+    margin-left: 5px;
 }

@@ -18,12 +18,13 @@ $(document).ready(function(){
     var id = 0;
     var subId = 0;
     
+    
 //    pageInitializers[0] = "";
 //    pageInitializers[1] = "";
     pageInitializers[1][0] = InitializeManageProfiles;
     pageInitializers[1][1] = InitializeCandidateSearch;
     
-    var yeah = InitializeManageProfiles;
+
     
     navbarPages[0] = "";
     navbarPages[1][0] = "Candidates/page_ManageProfiles.html";
@@ -31,7 +32,7 @@ $(document).ready(function(){
     navbarPages[2] = "";
     navbarPages[3] = "";
     
-    
+    LoadPage(navbarPages[1][1], pageInitializers[1][1]);
     
     $("#header #navBar li").click(function(){
 
@@ -59,10 +60,7 @@ $(document).ready(function(){
 
 //    LoadPage("Candidates/page_CandidateSearch.html");
 //    LoadPage("Candidates/index.html");
-    
-
 });
-
 
 function Logout()
 {
@@ -73,19 +71,11 @@ function Logout()
     });
 }
 
-function RefreshResults()
-{
-    var url = "ProfileSearch.php";
-    $.post( url, {count: 10}, function(data){
-        $("#overFlow").html(data);
-    });
-    
-}
 
-function LoadPart(path, part,callback)
+function LoadPart(path, part, callback, repeat)
 {
     var url = "PageLoader.php";
-    $.post( url, {path: path, method: "LoadPage"}, function(data){
+    $.post( url, {path: path, method: "LoadPage", repeat:repeat}, function(data){
         $(part).html(data);
         callback();
     });

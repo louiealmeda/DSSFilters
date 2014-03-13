@@ -10,16 +10,11 @@ var activeProfileEducation = {};
 var activeProfileEmployment = {};
 
 var activeProfilePart = 0;
-
+var repeat = 1;
 $(document).ready(function(){
     
     
 });
-
-function InitializeCandidateSearch()
-{
-    
-}
 
 function InitializeManageProfiles()
 {   
@@ -149,6 +144,7 @@ function LoadProfile(id)
         
 //        alert(JSON.stringify(activeProfileEmployment));
         
+        repeat = 1;
         LoadProfileComputations(id);
         LoadProfilePart(-1);
         LoadProfilePart(activeProfilePart);
@@ -181,6 +177,12 @@ function LoadProfilePart(part)
     if(part != -1)
         activeProfilePart = part;
     var IDs = [];
+//    repeat = 1;
+
+    var isRepeating = false;
+    var containerName = "";
+    
+    var sourceArray = activeProfileInfo;
     switch(part)
     {
         case -1:
@@ -192,14 +194,51 @@ function LoadProfilePart(part)
         case 1:
             IDs = ["gender","birthday", "age","skills","desiredSalary","overview"];
             break;
+        case 2:
+            isRepeating = true;
+            
+//            for(var i = 0; i < repeat; i++)
+//            {
+//                
+//            }
+            $("#employmentHistory").each(function(index, e){
+                $(e).attr("id", $(e).attr("id") + index);
+                
+            });
+            
+            sourceArray = activeProfileEmployment;
+            containerName = "employmentHistory";
+//            repeat = activeProfileEmployment.length;
+            
+            IDs = ["company", "jobTitle", "phone","address",
+                        "supervisor","startingSalary", "endingSalary",
+                        "responsibilities", "reasonForLeaving"];
+//            alert(JSON.stringify(sourceArray));
+            break;
     }
     
     
-    IDs.forEach(function(id){
-//        alert(id);
-        $("#" + id).val(activeProfileInfo[id]);
-    });
     
+    
+        
+    if(!isRepeating)
+    {
+        IDs.forEach(function(id){
+            $("#" + id).val(activeProfileInfo[id]);
+        });
+    }
+    else
+    {   
+        for(var i = 0; i < sourceArray.length; i++)
+        {
+            
+            IDs.forEach(function(id){
+//                alert("#" + containerName + i + " #" + id + " | " + sourceArray[i][id]);
+                $("#" + containerName + i + " #" + id).val(sourceArray[i][id]);
+            });
+        }       
+    }
+            
     
     
     $('input[type="text"]').keyup(resizeInput).each(resizeInput);
@@ -208,8 +247,6 @@ function LoadProfilePart(part)
 function resizeInput() {
     $(this).attr('size', $(this).val().length);
 }
-
-
 
 
 function filterProfiles(sender)
@@ -324,11 +361,27 @@ $(document).on('click', '.cp #profileTabs li', function(e){
     $(".cp #profileTabs li").removeClass("selected");
     $(this).addClass("selected");
     
+    
+    switch(activeProfilePart)
+    {
+        case 2:
+            repeat = activeProfileEmployment.length;
+            break;
+            
+        case 3:
+            repeat = activeProfileEducation.length;
+            break;
+        default:
+            repeat = 1;
+            break;
+    }
+//    alert(activeProfilePart + "|" + repeat);
+    
     LoadPart( "Candidates/profileTabs/profile" + id + ".html", "#profileContents", 
             function(){
-                 ToggleTextBoxes(isEditing);
+                ToggleTextBoxes(isEditing);
                 LoadProfilePart(id);
-            });
+            },repeat);
     
     
 });

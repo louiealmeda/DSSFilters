@@ -73,6 +73,11 @@ switch($_POST['method'])
         GetFoldersWithContent();
         break;
     
+    case "GetFolders":
+        GetFolders();
+        break;
+    
+    
 }
 
 
@@ -253,6 +258,27 @@ function AddFolder()
     GetFoldersWithContent();
 }
 
+function GetFolders()
+{
+    session_start();
+    $folders = mysql_query("SELECT name, folderID FROM folder WHERE HRManagerID = {$_SESSION['HRID']} 
+    ORDER BY name ASC");
+    
+    
+    if($folders)
+    {
+        while($row = mysql_fetch_assoc($folders))
+        {
+            echo  "{$row['folderID']}, {$row['name']}|";
+     
+        }
+    }
+    else
+        die(mysql_error());
+    
+    echo "-1, unsorted";
+}
+
 function GetFoldersWithContent()
 {
     $filter = "";
@@ -262,6 +288,7 @@ function GetFoldersWithContent()
         $key = $_POST['nameFilter'];
         $filter = " AND (a.firstName LIKE '%$key%' OR a.lastName LIKE '%$key%') ";
     }
+    
     session_start();
     $query = "SELECT applicantProfileID, a.firstName, a.lastName, a.middleInitial , folderID 
     FROM applicantProfile as a WHERE HRManagerID = {$_SESSION['HRID']} $filter
@@ -502,7 +529,7 @@ function SaveApplicantForm()
         -1
     );";
     
-//    echo $query;
+    echo $query;
     
     $ret = mysql_query($query);
     

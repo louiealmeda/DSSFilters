@@ -3,13 +3,12 @@
 
     for($i = 0; $i< $count; $i++)
     {
-
-        $file=fopen("components/profileResult.html","r") or exit("Unable to open file!");
-        while (!feof($file))
-        {
-            echo fgetc($file);
-        }
-        fclose($file);
+        $name = "Dante";
+        $jobTitle = "Programmer";
+        $yearsOfExperience = "5yrs";
+        $desiredPosition = "Software Engineer";
+        $overview = "The quick brown fox jumps over the lazy dog. Big blue eyes, pointy nose chasing mice and digging holes. Tiny paws up the hill, suddenly you're standing still";
         
+        include("components/profileResult.php");   
     }
 ?>
